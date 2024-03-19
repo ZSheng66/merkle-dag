@@ -2,6 +2,17 @@ package merkledag
 
 import "hash"
 
+type Link struct {
+	Name string
+	Hash []byte
+	Size int
+}
+
+type Object struct {
+	Links []Link
+	Data  []byte
+}
+
 func Add(store KVStore, node Node, h hash.Hash) []byte {
     // 将对象序列化为字节数组
     data, err := Encode(node)
